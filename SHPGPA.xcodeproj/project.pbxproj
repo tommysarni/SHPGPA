@@ -7,14 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C5782D9E1E7C773B006CB8B0 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5782D9C1E7C773B006CB8B0 /* Fabric.framework */; };
+		C5782D9F1E7C773B006CB8B0 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5782D9D1E7C773B006CB8B0 /* Crashlytics.framework */; };
+		C5856C7A1E6F671500D72F96 /* TextFieldAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5856C791E6F671500D72F96 /* TextFieldAnimations.swift */; };
 		C592E5FE1E5CDF040095D7DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C592E5FD1E5CDF040095D7DC /* AppDelegate.swift */; };
 		C592E6001E5CDF040095D7DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C592E5FF1E5CDF040095D7DC /* ViewController.swift */; };
 		C592E6031E5CDF040095D7DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C592E6011E5CDF040095D7DC /* Main.storyboard */; };
 		C592E6051E5CDF040095D7DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C592E6041E5CDF040095D7DC /* Assets.xcassets */; };
 		C592E6081E5CDF040095D7DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C592E6061E5CDF040095D7DC /* LaunchScreen.storyboard */; };
+		C592E6121E5E81820095D7DC /* GPAGrades.swift in Sources */ = {isa = PBXBuildFile; fileRef = C592E6111E5E81820095D7DC /* GPAGrades.swift */; };
+		C592E6141E5E85080095D7DC /* StoredGrades.swift in Sources */ = {isa = PBXBuildFile; fileRef = C592E6131E5E85080095D7DC /* StoredGrades.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C5782D9C1E7C773B006CB8B0 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
+		C5782D9D1E7C773B006CB8B0 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
+		C5856C791E6F671500D72F96 /* TextFieldAnimations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldAnimations.swift; sourceTree = "<group>"; };
 		C592E5FA1E5CDF040095D7DC /* SHPGPA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SHPGPA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C592E5FD1E5CDF040095D7DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C592E5FF1E5CDF040095D7DC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +30,8 @@
 		C592E6041E5CDF040095D7DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C592E6071E5CDF040095D7DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C592E6091E5CDF040095D7DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C592E6111E5E81820095D7DC /* GPAGrades.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPAGrades.swift; sourceTree = "<group>"; };
+		C592E6131E5E85080095D7DC /* StoredGrades.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredGrades.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +39,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5782D9F1E7C773B006CB8B0 /* Crashlytics.framework in Frameworks */,
+				C5782D9E1E7C773B006CB8B0 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,8 +67,13 @@
 			isa = PBXGroup;
 			children = (
 				C592E5FD1E5CDF040095D7DC /* AppDelegate.swift */,
+				C5856C791E6F671500D72F96 /* TextFieldAnimations.swift */,
 				C592E5FF1E5CDF040095D7DC /* ViewController.swift */,
+				C592E6131E5E85080095D7DC /* StoredGrades.swift */,
+				C592E6111E5E81820095D7DC /* GPAGrades.swift */,
 				C592E6011E5CDF040095D7DC /* Main.storyboard */,
+				C5782D9C1E7C773B006CB8B0 /* Fabric.framework */,
+				C5782D9D1E7C773B006CB8B0 /* Crashlytics.framework */,
 				C592E6041E5CDF040095D7DC /* Assets.xcassets */,
 				C592E6061E5CDF040095D7DC /* LaunchScreen.storyboard */,
 				C592E6091E5CDF040095D7DC /* Info.plist */,
@@ -74,6 +91,7 @@
 				C592E5F61E5CDF030095D7DC /* Sources */,
 				C592E5F71E5CDF030095D7DC /* Frameworks */,
 				C592E5F81E5CDF030095D7DC /* Resources */,
+				C5782D871E7C71E2006CB8B0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -132,12 +150,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C5782D871E7C71E2006CB8B0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run c74a2ed270981b74bd385afe8f948c48b37c78c7 bcb3582ac9494171db6eb9415a1b64445ce9842936a0d53c32d01aa66b45857e";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C592E5F61E5CDF030095D7DC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C592E6141E5E85080095D7DC /* StoredGrades.swift in Sources */,
+				C5856C7A1E6F671500D72F96 /* TextFieldAnimations.swift in Sources */,
 				C592E6001E5CDF040095D7DC /* ViewController.swift in Sources */,
+				C592E6121E5E81820095D7DC /* GPAGrades.swift in Sources */,
 				C592E5FE1E5CDF040095D7DC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,11 +299,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3QT8HY66FJ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SHPGPA/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.shp.SHPGPA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -275,11 +318,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3QT8HY66FJ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SHPGPA/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.shp.SHPGPA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -302,6 +351,7 @@
 				C592E60E1E5CDF040095D7DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
