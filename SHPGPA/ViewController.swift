@@ -14,7 +14,6 @@ import Social
 
 class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelegate {
 
-    
     @IBOutlet weak var allTextFieldsView: UIView!
 
     @IBOutlet weak var shareButtonLabel: UIView!
