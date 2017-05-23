@@ -42,6 +42,7 @@ class InformationViewController: UIViewController {
         
     }
     
+    
     @IBAction func swipedDown(gesture: UISwipeGestureRecognizer) {
         self.performSegue(withIdentifier: "backVC", sender: self)
     }

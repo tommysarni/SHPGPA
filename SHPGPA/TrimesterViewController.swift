@@ -97,6 +97,7 @@ class TrimesterViewController: UIViewController, UIApplicationDelegate {
                 averageWeighted.text! = "\(formattedAverageTrimesters!)"
                 averageLabel.text! = "\(formattedAverageUnweightedTrimesters!)"
                 
+                
             }
 
         }
