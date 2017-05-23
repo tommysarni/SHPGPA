@@ -1941,6 +1941,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelega
     
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 print("viewloaded")

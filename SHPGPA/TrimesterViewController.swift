@@ -87,6 +87,7 @@ class TrimesterViewController: UIViewController, UIApplicationDelegate {
             defaults.setValue(personalizedUnweighted, forKey: "TrimesterOneUnweightedSaves")
         
             
+            
             if (oneUnweightedLabel.text?.isEmpty)! || (oneWeightedLabel.text?.isEmpty)! || (twoUnweightedLabel.text?.isEmpty)! || (oneWeightedLabel.text?.isEmpty)! || (threeUnweightedLabel.text?.isEmpty)! || (oneWeightedLabel.text?.isEmpty)! {
                 print("Average couldnt be found")
             } else {
