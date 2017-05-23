@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C525DA451EBE53C2006FE714 /* pageControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525DA441EBE53C2006FE714 /* pageControllers.swift */; };
+		C53E54FE1EBE09D800C181F6 /* TrimesterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E54FD1EBE09D800C181F6 /* TrimesterViewController.swift */; };
 		C5782D9E1E7C773B006CB8B0 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5782D9C1E7C773B006CB8B0 /* Fabric.framework */; };
 		C5782D9F1E7C773B006CB8B0 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5782D9D1E7C773B006CB8B0 /* Crashlytics.framework */; };
 		C5856C7A1E6F671500D72F96 /* TextFieldAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5856C791E6F671500D72F96 /* TextFieldAnimations.swift */; };
@@ -17,9 +19,12 @@
 		C592E6081E5CDF040095D7DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C592E6061E5CDF040095D7DC /* LaunchScreen.storyboard */; };
 		C592E6121E5E81820095D7DC /* GPAGrades.swift in Sources */ = {isa = PBXBuildFile; fileRef = C592E6111E5E81820095D7DC /* GPAGrades.swift */; };
 		C592E6141E5E85080095D7DC /* StoredGrades.swift in Sources */ = {isa = PBXBuildFile; fileRef = C592E6131E5E85080095D7DC /* StoredGrades.swift */; };
+		C5DC38821EC5F50D00C622CC /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DC38811EC5F50D00C622CC /* InformationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C525DA441EBE53C2006FE714 /* pageControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pageControllers.swift; sourceTree = "<group>"; };
+		C53E54FD1EBE09D800C181F6 /* TrimesterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrimesterViewController.swift; sourceTree = "<group>"; };
 		C5782D9C1E7C773B006CB8B0 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		C5782D9D1E7C773B006CB8B0 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		C5856C791E6F671500D72F96 /* TextFieldAnimations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldAnimations.swift; sourceTree = "<group>"; };
@@ -32,6 +37,7 @@
 		C592E6091E5CDF040095D7DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C592E6111E5E81820095D7DC /* GPAGrades.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPAGrades.swift; sourceTree = "<group>"; };
 		C592E6131E5E85080095D7DC /* StoredGrades.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredGrades.swift; sourceTree = "<group>"; };
+		C5DC38811EC5F50D00C622CC /* InformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +74,9 @@
 			children = (
 				C592E5FD1E5CDF040095D7DC /* AppDelegate.swift */,
 				C5856C791E6F671500D72F96 /* TextFieldAnimations.swift */,
+				C53E54FD1EBE09D800C181F6 /* TrimesterViewController.swift */,
+				C5DC38811EC5F50D00C622CC /* InformationViewController.swift */,
+				C525DA441EBE53C2006FE714 /* pageControllers.swift */,
 				C592E5FF1E5CDF040095D7DC /* ViewController.swift */,
 				C592E6131E5E85080095D7DC /* StoredGrades.swift */,
 				C592E6111E5E81820095D7DC /* GPAGrades.swift */,
@@ -114,7 +123,7 @@
 				TargetAttributes = {
 					C592E5F91E5CDF030095D7DC = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 3QT8HY66FJ;
+						DevelopmentTeam = XD6KE68538;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -171,11 +180,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C525DA451EBE53C2006FE714 /* pageControllers.swift in Sources */,
 				C592E6141E5E85080095D7DC /* StoredGrades.swift in Sources */,
 				C5856C7A1E6F671500D72F96 /* TextFieldAnimations.swift in Sources */,
+				C53E54FE1EBE09D800C181F6 /* TrimesterViewController.swift in Sources */,
 				C592E6001E5CDF040095D7DC /* ViewController.swift in Sources */,
 				C592E6121E5E81820095D7DC /* GPAGrades.swift in Sources */,
 				C592E5FE1E5CDF040095D7DC /* AppDelegate.swift in Sources */,
+				C5DC38821EC5F50D00C622CC /* InformationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +234,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -272,6 +285,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -298,16 +312,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3QT8HY66FJ;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = XD6KE68538;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SHPGPA/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.shp.SHPGPA;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shp.SHPGPA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -317,16 +334,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3QT8HY66FJ;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = XD6KE68538;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SHPGPA/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.shp.SHPGPA;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shp.SHPGPA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

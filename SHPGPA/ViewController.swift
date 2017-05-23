@@ -507,20 +507,50 @@ class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelega
     }
     
     @IBAction func plusMinusTabButtonPressed(_ sender: UIBarButtonItem) {
-        if activeTextField != nil {
+    if activeTextField != nil {
         
-        if (activeTextField.text!.range(of:"A") != nil) || (activeTextField.text!.range(of:"B") != nil) || (activeTextField.text!.range(of:"C") != nil) {
+        if ((activeTextField.text!.range(of:"A") != nil) || (activeTextField.text!.range(of:"B") != nil) || (activeTextField.text!.range(of:"C") != nil) || (activeTextField.text!.range(of:"D") != nil)) && (!activeTextField.text!.contains("-")) {
             
-            if activeTextField.text!.range(of: "+") != nil {
-                activeTextField.deleteBackward()
-            } else {
+            
+                if activeTextField.text!.range(of: "+") != nil {
+                    activeTextField.deleteBackward()
+                } else {
                 activeTextField.text!.append("+")
-            }
+                }
             
+            }
+        if activeTextField.text!.contains("-") {
+            activeTextField.deleteBackward()
+            activeTextField.text!.append("+")
         }
         }
         
     }
+    @IBOutlet weak var minusTabButtonLabel: UIBarButtonItem!
+    
+    
+    
+    @IBAction func MinusTabButtonPressed(_ sender: UIBarButtonItem) {
+        if activeTextField != nil {
+            
+            if ((activeTextField.text!.range(of:"A") != nil) || (activeTextField.text!.range(of:"B") != nil) || (activeTextField.text!.range(of:"C") != nil) || (activeTextField.text!.range(of:"D") != nil)) && (!activeTextField.text!.contains("+")) {
+                
+                
+                if activeTextField.text!.range(of: "-") != nil {
+                    activeTextField.deleteBackward()
+                } else {
+                    activeTextField.text!.append("-")
+                }
+            }
+            if activeTextField.text!.contains("+") {
+                activeTextField.deleteBackward()
+                activeTextField.text!.append("-")
+            }
+            
+        }
+        
+    }
+    
     
     @IBAction func deleteTabButtonPressed(_ sender: UIBarButtonItem) {
         if activeTextField != nil {
@@ -546,6 +576,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelega
     var gGrade = GPAGrades()
     var eightGrade = GPAGrades()
     var finalCalculatedGradePoints: Double! = 0.00
+    var duplicateFinalCalculatedGradePoints: Double! = 0.00
     
    
     
@@ -598,6 +629,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelega
                 eigthBlock.isHidden = true
             }
             
+            
             //Making keyobard appear when its in number tab
             gradeABlock.inputView = super.inputView
             gradeBBlock.inputView = super.inputView
@@ -609,6 +641,15 @@ class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelega
            // if isThereAnAddedBlock == true {
             eigthBlock.inputView = super.inputView
             //}
+            
+            gradeABlock.resignFirstResponder()
+            gradeBBlock.resignFirstResponder()
+            gradeCBlock.resignFirstResponder()
+            gradeDBlock.resignFirstResponder()
+            gradeEBlock.resignFirstResponder()
+            gradeFBlock.resignFirstResponder()
+            gradeGBlock.resignFirstResponder()
+            eigthBlock.resignFirstResponder()
             
         default:
             alphabeticalGrades = true
@@ -832,10 +873,126 @@ class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelega
     
     // Methods
     
+    @IBOutlet weak var unweightedButtonOutlet: UIButton!
+    
+    var isGPAWeighted: Bool = true
+    
+    @IBAction func unweightedButton(_ sender: UIButton) {
+        
+        let defaults = UserDefaults.standard
+        if isGPAWeighted == false {
+            isGPAWeighted = true
+            defaults.set(true, forKey: "isGPAWeighted")
+            sender.setTitle("Weighted", for: .normal)
+        } else {
+            isGPAWeighted = false
+            defaults.set(false, forKey: "isGPAWeighted")
+            sender.setTitle("Unweighted", for: .normal)
+        }
+        
+        print("isGPAWeighted = \(isGPAWeighted)")
+        
+       
+        
+        
+    }
+    
+    
+    
     
     @IBAction func calculateButtonPressed(_ sender: UIButton) {
        
         Answers.logCustomEvent(withName: "GPA Calculated", customAttributes: ["Calulated": 2])
+        
+        
+        
+        if isGPAWeighted == false {
+           aGrade.classType = "Unweighted"
+            bGrade.classType = "Unweighted"
+            cGrade.classType = "Unweighted"
+            dGrade.classType = "Unweighted"
+            eGrade.classType = "Unweighted"
+            fGrade.classType = "Unweighted"
+            gGrade.classType = "Unweighted"
+            eightGrade.classType = "Unweighted"
+        } else {
+            
+            
+            if  segmentedControlA.selectedSegmentIndex == 0 {
+                aGrade.classType = "CP"
+            } else if segmentedControlA.selectedSegmentIndex == 1 {
+                aGrade.classType = "Honors"
+            } else {
+                aGrade.classType = "AP"
+            }
+            
+            if  segmentedControlB.selectedSegmentIndex == 0 {
+                bGrade.classType = "CP"
+            } else if segmentedControlB.selectedSegmentIndex == 1 {
+                bGrade.classType = "Honors"
+            } else {
+                bGrade.classType = "AP"
+            }
+            
+            if  segmentedControlC.selectedSegmentIndex == 0 {
+                cGrade.classType = "CP"
+            } else if segmentedControlC.selectedSegmentIndex == 1 {
+                cGrade.classType = "Honors"
+            } else {
+                cGrade.classType = "AP"
+            }
+            
+            if  segmentedControlC.selectedSegmentIndex == 0 {
+                cGrade.classType = "CP"
+            } else if segmentedControlC.selectedSegmentIndex == 1 {
+                cGrade.classType = "Honors"
+            } else {
+                cGrade.classType = "AP"
+            }
+            
+            if  segmentedControlD.selectedSegmentIndex == 0 {
+                dGrade.classType = "CP"
+            } else if segmentedControlD.selectedSegmentIndex == 1 {
+                dGrade.classType = "Honors"
+            } else {
+                dGrade.classType = "AP"
+            }
+            
+            if  segmentedControlE.selectedSegmentIndex == 0 {
+                eGrade.classType = "CP"
+            } else if segmentedControlE.selectedSegmentIndex == 1 {
+                eGrade.classType = "Honors"
+            } else {
+                eGrade.classType = "AP"
+            }
+            
+            if  segmentedControlF.selectedSegmentIndex == 0 {
+                fGrade.classType = "CP"
+            } else if segmentedControlF.selectedSegmentIndex == 1 {
+                fGrade.classType = "Honors"
+            } else {
+                fGrade.classType = "AP"
+            }
+            
+            
+            if  segmentedControlG.selectedSegmentIndex == 0 {
+                gGrade.classType = "CP"
+            } else if segmentedControlG.selectedSegmentIndex == 1 {
+                gGrade.classType = "Honors"
+            } else {
+                gGrade.classType = "AP"
+            }
+            
+            if  segmentedControlEigth.selectedSegmentIndex == 0 {
+                eightGrade.classType = "CP"
+            } else if segmentedControlEigth.selectedSegmentIndex == 1 {
+                eightGrade.classType = "Honors"
+            } else {
+                eightGrade.classType = "AP"
+            }
+            
+        }
+        
         
 
         //Core Animations for shaking
@@ -874,12 +1031,26 @@ class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelega
                 
         //For unwrapping purposes
         var a: Double = 0.00
+        var aUnweighted: Double = 0.00
+        
         var b: Double = 0.00
+        var bUnweighted: Double = 0.00
+        
         var c: Double = 0.00
+        var cUnweighted: Double = 0.00
+        
         var d: Double = 0.00
+        var dUnweighted: Double = 0.00
+        
         var e: Double = 0.00
+        var eUnweighted: Double = 0.00
+        
         var f: Double = 0.00
+        var fUnweighted: Double = 0.00
+        
         var g: Double = 0.00
+        var gUnweighted: Double = 0.00
+        
         
         
         if let newAGrade = Double(gradeABlock.text!) {
@@ -890,8 +1061,15 @@ class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelega
                 gradeABlock.layer.borderColor = segmentedControlA.tintColor.cgColor
             }
         }
+        let duplicateAGrade: GPAGrades! = aGrade
          aGrade.calculateGradePoints()
          a = aGrade.gradePoints
+        if aGrade.classType != "Unweighted" {
+        duplicateAGrade.classType = "Unweighted"
+            duplicateAGrade.calculateGradePoints()
+            aUnweighted = duplicateAGrade.gradePoints
+            print("\(aUnweighted)")
+        }
         
         
         if let newBGrade = Double(gradeBBlock.text!){
@@ -902,8 +1080,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelega
                 gradeBBlock.layer.borderColor = segmentedControlA.tintColor.cgColor
             }
         }
+        let duplicateBGrade: GPAGrades! = bGrade
          bGrade.calculateGradePoints()
          b = bGrade.gradePoints
+        if bGrade.classType != "Unweighted" {
+            duplicateBGrade.classType = "Unweighted"
+            duplicateBGrade.calculateGradePoints()
+            bUnweighted = duplicateBGrade.gradePoints
+        }
         
         if let newCGrade = Double(gradeCBlock.text!) {
         cGrade.grade = newCGrade
@@ -913,8 +1097,15 @@ class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelega
                 gradeCBlock.layer.borderColor = segmentedControlA.tintColor.cgColor
             }
         }
+        let duplicateCGrade: GPAGrades! = cGrade
          cGrade.calculateGradePoints()
          c = cGrade.gradePoints
+        if cGrade.classType != "Unweighted" {
+            duplicateCGrade.classType = "Unweighted"
+            duplicateCGrade.calculateGradePoints()
+            cUnweighted = duplicateCGrade.gradePoints
+        }
+
         
         if let newDGrade = Double(gradeDBlock.text!) {
         dGrade.grade = newDGrade
@@ -924,8 +1115,15 @@ class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelega
                 gradeDBlock.layer.borderColor = segmentedControlA.tintColor.cgColor
             }
         }
+        let duplicateDGrade: GPAGrades! = dGrade
          dGrade.calculateGradePoints()
          d = dGrade.gradePoints
+        if dGrade.classType != "Unweighted" {
+            duplicateDGrade.classType = "Unweighted"
+            duplicateDGrade.calculateGradePoints()
+            dUnweighted = duplicateDGrade.gradePoints
+        }
+
         
         if let newEGrade = Double(gradeEBlock.text!) {
         eGrade.grade = newEGrade
@@ -935,8 +1133,15 @@ class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelega
                 gradeEBlock.layer.borderColor = segmentedControlA.tintColor.cgColor
             }
         }
+        let duplicateEGrade: GPAGrades! = eGrade
          eGrade.calculateGradePoints()
          e = eGrade.gradePoints
+        if eGrade.classType != "Unweighted" {
+            duplicateEGrade.classType = "Unweighted"
+            duplicateEGrade.calculateGradePoints()
+            eUnweighted = duplicateEGrade.gradePoints
+        }
+
         
         if let newFGrade = Double(gradeFBlock.text!) {
         fGrade.grade = newFGrade
@@ -946,8 +1151,15 @@ class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelega
                 gradeFBlock.layer.borderColor = segmentedControlA.tintColor.cgColor
             }
         }
+        let duplicateFGrade: GPAGrades! = fGrade
          fGrade.calculateGradePoints()
          f = fGrade.gradePoints
+        if fGrade.classType != "Unweighted" {
+            duplicateFGrade.classType = "Unweighted"
+            duplicateFGrade.calculateGradePoints()
+            fUnweighted = duplicateFGrade.gradePoints
+        }
+
        
         if let newGGrade = Double(gradeGBlock.text!) {
         gGrade.grade = newGGrade
@@ -957,9 +1169,24 @@ class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelega
                 gradeGBlock.layer.borderColor = segmentedControlA.tintColor.cgColor
             }
         }
+        let duplicateGGrade: GPAGrades! = gGrade
          gGrade.calculateGradePoints()
          g = gGrade.gradePoints
-         
+        if gGrade.classType != "Unweighted" {
+            duplicateGGrade.classType = "Unweighted"
+            duplicateGGrade.calculateGradePoints()
+            gUnweighted = duplicateGGrade.gradePoints
+        }
+
+        if isGPAWeighted == true {
+            
+            duplicateFinalCalculatedGradePoints = (aUnweighted + bUnweighted + cUnweighted + dUnweighted + eUnweighted + fUnweighted + gUnweighted)
+            let duplicateFinalCalculatedGPA = duplicateFinalCalculatedGradePoints / 7
+            
+            let defaults = UserDefaults.standard
+            defaults.set("\(duplicateFinalCalculatedGPA)", forKey: "duplicateFinalGPAText")
+            defaults.set(true, forKey: "isGPAWeighted")
+        }
         
         finalCalculatedGradePoints = (a + b + c + d + e + f + g)
         
@@ -968,63 +1195,139 @@ class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelega
         finalGPA.text = "\(personalizedGPA!)"
         
         print("they didnt equal nil")
+            
+        let defaults = UserDefaults.standard
+        defaults.set("\(finalCalculatedGPA)", forKey: "finalGPAText")
         
             default:
                 
            Answers.logCustomEvent(withName: "GPA Calculated With Alphabetical Input", customAttributes: ["Calulated": 4])
            
                 // unwrapping
-                var a: Double = 0.00
-                var b: Double = 0.00
-                var c: Double = 0.00
-                var d: Double = 0.00
-                var e: Double = 0.00
-                var f: Double = 0.00
-                var g: Double = 0.00
+           var a: Double = 0.00
+           var aUnweighted: Double = 0.00
+           
+           var b: Double = 0.00
+           var bUnweighted: Double = 0.00
+           
+           var c: Double = 0.00
+           var cUnweighted: Double = 0.00
+           
+           var d: Double = 0.00
+           var dUnweighted: Double = 0.00
+           
+           var e: Double = 0.00
+           var eUnweighted: Double = 0.00
+           
+           var f: Double = 0.00
+           var fUnweighted: Double = 0.00
+           
+           var g: Double = 0.00
+           var gUnweighted: Double = 0.00
+           
                 
              
             
             if let newAGrade = String(gradeABlock.text!) {
                 aGrade.alphabeticalGrade = newAGrade
             }
+           
+           let duplicateAGrade: GPAGrades! = aGrade
+           duplicateAGrade.alphabeticalGrade = aGrade.alphabeticalGrade
             aGrade.calculateGradePoints()
             a = aGrade.alphabeticalGradePoints
+           if aGrade.classType != "Unweighted" {
+            duplicateAGrade.classType = "Unweighted"
+            duplicateAGrade.calculateGradePoints()
+            aUnweighted = duplicateAGrade.alphabeticalGradePoints
+           }
+
 
             if let newBGrade = String(gradeBBlock.text!) {
                     bGrade.alphabeticalGrade = newBGrade
                 }
+           let duplicateBGrade: GPAGrades! = bGrade
                 bGrade.calculateGradePoints()
                 b = bGrade.alphabeticalGradePoints
+           if bGrade.classType != "Unweighted" {
+            duplicateBGrade.classType = "Unweighted"
+            duplicateBGrade.calculateGradePoints()
+            bUnweighted = duplicateBGrade.alphabeticalGradePoints
+           }
+
             
                 if let newCGrade = String(gradeCBlock.text!) {
                     cGrade.alphabeticalGrade = newCGrade
                 }
+           let duplicateCGrade: GPAGrades! = cGrade
                 cGrade.calculateGradePoints()
                 c = cGrade.alphabeticalGradePoints
+           if cGrade.classType != "Unweighted" {
+            duplicateCGrade.classType = "Unweighted"
+            duplicateCGrade.calculateGradePoints()
+            cUnweighted = duplicateCGrade.alphabeticalGradePoints
+           }
+
             
                 if let newDGrade = String(gradeDBlock.text!) {
                     dGrade.alphabeticalGrade = newDGrade
                 }
+           let duplicateDGrade: GPAGrades! = dGrade
                 dGrade.calculateGradePoints()
                 d = dGrade.alphabeticalGradePoints
+           if dGrade.classType != "Unweighted" {
+            duplicateDGrade.classType = "Unweighted"
+            duplicateDGrade.calculateGradePoints()
+            dUnweighted = duplicateDGrade.alphabeticalGradePoints
+           }
+
             
                 if let newEGrade = String(gradeEBlock.text!) {
                     eGrade.alphabeticalGrade = newEGrade
                 }
+           let duplicateEGrade: GPAGrades! = eGrade
                 eGrade.calculateGradePoints()
                 e = eGrade.alphabeticalGradePoints
+           if eGrade.classType != "Unweighted" {
+            duplicateEGrade.classType = "Unweighted"
+            duplicateEGrade.calculateGradePoints()
+            eUnweighted = duplicateEGrade.alphabeticalGradePoints
+           }
+
             
                 if let newFGrade = String(gradeFBlock.text!) {
                     fGrade.alphabeticalGrade = newFGrade
                 }
+           let duplicateFGrade: GPAGrades! = fGrade
                 fGrade.calculateGradePoints()
                 f = fGrade.alphabeticalGradePoints
+           if fGrade.classType != "Unweighted" {
+            duplicateFGrade.classType = "Unweighted"
+            duplicateFGrade.calculateGradePoints()
+            fUnweighted = duplicateFGrade.alphabeticalGradePoints
+           }
+
             
                 if let newGGrade = String(gradeGBlock.text!) {
                     gGrade.alphabeticalGrade = newGGrade
                 }
+           let duplicateGGrade: GPAGrades! = gGrade
                 gGrade.calculateGradePoints()
                 g = gGrade.alphabeticalGradePoints
+           if gGrade.classType != "Unweighted" {
+            duplicateGGrade.classType = "Unweighted"
+            duplicateGGrade.calculateGradePoints()
+            gUnweighted = duplicateGGrade.alphabeticalGradePoints
+           }
+           
+           if isGPAWeighted == true {
+            
+            duplicateFinalCalculatedGradePoints = (aUnweighted + bUnweighted + cUnweighted + dUnweighted + eUnweighted + fUnweighted + gUnweighted)
+            let duplicateFinalCalculatedGPA = duplicateFinalCalculatedGradePoints / 7
+            
+            let defaults = UserDefaults.standard
+            defaults.set("\(duplicateFinalCalculatedGPA)", forKey: "duplicateFinalGPAText")
+           }
             
                 finalCalculatedGradePoints = (a + b + c + d + e + f + g)
                 
@@ -1033,6 +1336,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelega
                 finalGPA.text = "\(personalizedGPA!)"
                 
                 print("they didnt equal nil")
+            
+           let defaults = UserDefaults.standard
+           defaults.set("\(finalCalculatedGPA)", forKey: "finalGPAText")
 
         }
     }
@@ -1050,13 +1356,29 @@ class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelega
                     
                     //For unwrapping purposes
                     var a: Double = 0.00
+                    var aUnweighted: Double = 0.00
+                    
                     var b: Double = 0.00
+                    var bUnweighted: Double = 0.00
+                    
                     var c: Double = 0.00
+                    var cUnweighted: Double = 0.00
+                    
                     var d: Double = 0.00
+                    var dUnweighted: Double = 0.00
+                    
                     var e: Double = 0.00
+                    var eUnweighted: Double = 0.00
+                    
                     var f: Double = 0.00
+                    var fUnweighted: Double = 0.00
+                    
                     var g: Double = 0.00
+                    var gUnweighted: Double = 0.00
+                    
                     var o: Double = 0.00
+                    var oUnweighted: Double = 0.00
+                    
                     
                     
                     if let newAGrade = Double(gradeABlock.text!) {
@@ -1067,8 +1389,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelega
                             gradeABlock.layer.borderColor = segmentedControlA.tintColor.cgColor
                         }
                     }
+                    let duplicateAGrade: GPAGrades! = aGrade
                     aGrade.calculateGradePoints()
                     a = aGrade.gradePoints
+                    if aGrade.classType != "Unweighted" {
+                        duplicateAGrade.classType = "Unweighted"
+                        duplicateAGrade.calculateGradePoints()
+                        aUnweighted = duplicateAGrade.gradePoints
+                    }
                     
                     
                     if let newBGrade = Double(gradeBBlock.text!){
@@ -1079,8 +1407,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelega
                             gradeBBlock.layer.borderColor = segmentedControlA.tintColor.cgColor
                         }
                     }
+                    let duplicateBGrade: GPAGrades! = bGrade
                     bGrade.calculateGradePoints()
                     b = bGrade.gradePoints
+                    if bGrade.classType != "Unweighted" {
+                        duplicateBGrade.classType = "Unweighted"
+                        duplicateBGrade.calculateGradePoints()
+                        bUnweighted = duplicateBGrade.gradePoints
+                    }
                     
                     if let newCGrade = Double(gradeCBlock.text!) {
                         cGrade.grade = newCGrade
@@ -1090,8 +1424,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelega
                             gradeCBlock.layer.borderColor = segmentedControlA.tintColor.cgColor
                         }
                     }
+                    let duplicateCGrade: GPAGrades! = cGrade
                     cGrade.calculateGradePoints()
                     c = cGrade.gradePoints
+                    if cGrade.classType != "Unweighted" {
+                        duplicateCGrade.classType = "Unweighted"
+                        duplicateCGrade.calculateGradePoints()
+                        cUnweighted = duplicateCGrade.gradePoints
+                    }
                     
                     if let newDGrade = Double(gradeDBlock.text!) {
                         dGrade.grade = newDGrade
@@ -1101,8 +1441,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelega
                             gradeDBlock.layer.borderColor = segmentedControlA.tintColor.cgColor
                         }
                     }
+                    let duplicateDGrade: GPAGrades! = dGrade
                     dGrade.calculateGradePoints()
                     d = dGrade.gradePoints
+                    if dGrade.classType != "Unweighted" {
+                        duplicateDGrade.classType = "Unweighted"
+                        duplicateDGrade.calculateGradePoints()
+                        dUnweighted = duplicateDGrade.gradePoints
+                    }
                     
                     if let newEGrade = Double(gradeEBlock.text!) {
                         eGrade.grade = newEGrade
@@ -1112,8 +1458,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelega
                             gradeEBlock.layer.borderColor = segmentedControlA.tintColor.cgColor
                         }
                     }
+                    let duplicateEGrade: GPAGrades! = eGrade
                     eGrade.calculateGradePoints()
                     e = eGrade.gradePoints
+                    if eGrade.classType != "Unweighted" {
+                        duplicateEGrade.classType = "Unweighted"
+                        duplicateEGrade.calculateGradePoints()
+                        eUnweighted = duplicateEGrade.gradePoints
+                    }
                     
                     if let newFGrade = Double(gradeFBlock.text!) {
                         fGrade.grade = newFGrade
@@ -1123,8 +1475,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelega
                             gradeFBlock.layer.borderColor = segmentedControlA.tintColor.cgColor
                         }
                     }
+                    let duplicateFGrade: GPAGrades! = fGrade
                     fGrade.calculateGradePoints()
                     f = fGrade.gradePoints
+                    if fGrade.classType != "Unweighted" {
+                        duplicateFGrade.classType = "Unweighted"
+                        duplicateFGrade.calculateGradePoints()
+                        fUnweighted = duplicateFGrade.gradePoints
+                    }
                     
                     if let newGGrade = Double(gradeGBlock.text!) {
                         gGrade.grade = newGGrade
@@ -1134,8 +1492,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelega
                             gradeGBlock.layer.borderColor = segmentedControlA.tintColor.cgColor
                         }
                     }
+                    let duplicateGGrade: GPAGrades! = gGrade
                     gGrade.calculateGradePoints()
                     g = gGrade.gradePoints
+                    if gGrade.classType != "Unweighted" {
+                        duplicateGGrade.classType = "Unweighted"
+                        duplicateGGrade.calculateGradePoints()
+                        gUnweighted = duplicateGGrade.gradePoints
+                    }
                     
                     if let newOGrade = Double(eigthBlock.text!) {
                         eightGrade.grade = newOGrade
@@ -1145,10 +1509,23 @@ class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelega
                             eigthBlock.layer.borderColor = segmentedControlA.tintColor.cgColor
                         }
                     }
+                    let duplicateOGrade: GPAGrades! = eightGrade
                     eightGrade.calculateGradePoints()
                     o = eightGrade.gradePoints
+                    if eightGrade.classType != "Unweighted" {
+                        duplicateOGrade.classType = "Unweighted"
+                        duplicateOGrade.calculateGradePoints()
+                        oUnweighted = duplicateOGrade.gradePoints
+                    }
 
-                    
+                    if isGPAWeighted == true {
+                        
+                        duplicateFinalCalculatedGradePoints = (aUnweighted + bUnweighted + cUnweighted + dUnweighted + eUnweighted + fUnweighted + gUnweighted + oUnweighted)
+                        let duplicateFinalCalculatedGPA = duplicateFinalCalculatedGradePoints / 8
+                        
+                        let defaults = UserDefaults.standard
+                        defaults.set("\(duplicateFinalCalculatedGPA)", forKey: "duplicateFinalGPAText")
+                    }
                     
                     
                     finalCalculatedGradePoints = (a + b + c + d + e + f + g + o)
@@ -1158,69 +1535,148 @@ class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelega
                     finalGPA.text = "\(personalizedGPA!)"
                     
                     print("they didnt equal nil")
+                    
+                    let defaults = UserDefaults.standard
+                    defaults.set("\(finalCalculatedGPA)", forKey: "finalGPAText")
                     
                 default:
                     
                     
                     // unwrapping
                     var a: Double = 0.00
+                    var aUnweighted: Double = 0.00
+                    
                     var b: Double = 0.00
+                    var bUnweighted: Double = 0.00
+                    
                     var c: Double = 0.00
+                    var cUnweighted: Double = 0.00
+                    
                     var d: Double = 0.00
+                    var dUnweighted: Double = 0.00
+                    
                     var e: Double = 0.00
+                    var eUnweighted: Double = 0.00
+                    
                     var f: Double = 0.00
+                    var fUnweighted: Double = 0.00
+                    
                     var g: Double = 0.00
+                    var gUnweighted: Double = 0.00
+                    
                     var o: Double = 0.00
+                    var oUnweighted: Double = 0.00
+                    
+
                     
                     
                     
                     if let newAGrade = String(gradeABlock.text!) {
                         aGrade.alphabeticalGrade = newAGrade
                     }
+                    let duplicateAGrade: GPAGrades! = aGrade
                     aGrade.calculateGradePoints()
                     a = aGrade.alphabeticalGradePoints
+                    if aGrade.classType != "Unweighted" {
+                        duplicateAGrade.classType = "Unweighted"
+                        duplicateAGrade.calculateGradePoints()
+                        aUnweighted = duplicateAGrade.alphabeticalGradePoints
+                    }
                     
                     if let newBGrade = String(gradeBBlock.text!) {
                         bGrade.alphabeticalGrade = newBGrade
                     }
+                    let duplicateBGrade: GPAGrades! = bGrade
                     bGrade.calculateGradePoints()
                     b = bGrade.alphabeticalGradePoints
+                    if bGrade.classType != "Unweighted" {
+                        duplicateBGrade.classType = "Unweighted"
+                        duplicateBGrade.calculateGradePoints()
+                        bUnweighted = duplicateBGrade.alphabeticalGradePoints
+                    }
                     
                     if let newCGrade = String(gradeCBlock.text!) {
                         cGrade.alphabeticalGrade = newCGrade
                     }
+                    let duplicateCGrade: GPAGrades! = cGrade
                     cGrade.calculateGradePoints()
                     c = cGrade.alphabeticalGradePoints
+                    if cGrade.classType != "Unweighted" {
+                        duplicateCGrade.classType = "Unweighted"
+                        duplicateCGrade.calculateGradePoints()
+                        cUnweighted = duplicateCGrade.alphabeticalGradePoints
+                    }
                     
                     if let newDGrade = String(gradeDBlock.text!) {
                         dGrade.alphabeticalGrade = newDGrade
                     }
+                    let duplicateDGrade: GPAGrades! = dGrade
                     dGrade.calculateGradePoints()
                     d = dGrade.alphabeticalGradePoints
+                    if dGrade.classType != "Unweighted" {
+                        duplicateDGrade.classType = "Unweighted"
+                        duplicateDGrade.calculateGradePoints()
+                        dUnweighted = duplicateDGrade.alphabeticalGradePoints
+                    }
                     
                     if let newEGrade = String(gradeEBlock.text!) {
                         eGrade.alphabeticalGrade = newEGrade
                     }
+                    let duplicateEGrade: GPAGrades! = eGrade
                     eGrade.calculateGradePoints()
                     e = eGrade.alphabeticalGradePoints
+                    if eGrade.classType != "Unweighted" {
+                        duplicateEGrade.classType = "Unweighted"
+                        duplicateEGrade.calculateGradePoints()
+                        eUnweighted = duplicateEGrade.alphabeticalGradePoints
+                    }
                     
                     if let newFGrade = String(gradeFBlock.text!) {
                         fGrade.alphabeticalGrade = newFGrade
                     }
+                    let duplicateFGrade: GPAGrades! = fGrade
                     fGrade.calculateGradePoints()
                     f = fGrade.alphabeticalGradePoints
+                    if fGrade.classType != "Unweighted" {
+                        duplicateFGrade.classType = "Unweighted"
+                        duplicateFGrade.calculateGradePoints()
+                        fUnweighted = duplicateFGrade.alphabeticalGradePoints
+                    }
                     
                     if let newGGrade = String(gradeGBlock.text!) {
                         gGrade.alphabeticalGrade = newGGrade
                     }
+                    let duplicateGGrade: GPAGrades! = gGrade
                     gGrade.calculateGradePoints()
                     g = gGrade.alphabeticalGradePoints
+                    if gGrade.classType != "Unweighted" {
+                        duplicateGGrade.classType = "Unweighted"
+                        duplicateGGrade.calculateGradePoints()
+                        gUnweighted = duplicateGGrade.alphabeticalGradePoints
+                    }
                     
                     if let newOGrade = String(eigthBlock.text!) {
                         eightGrade.alphabeticalGrade = newOGrade
                     }
+                    let duplicateOGrade: GPAGrades! = eightGrade
                     eightGrade.calculateGradePoints()
                     o = eightGrade.alphabeticalGradePoints
+                    if eightGrade.classType != "Unweighted" {
+                        duplicateOGrade.classType = "Unweighted"
+                        duplicateOGrade.calculateGradePoints()
+                        oUnweighted = duplicateOGrade.alphabeticalGradePoints
+                    }
+                    
+                    if isGPAWeighted == true {
+                        
+                        duplicateFinalCalculatedGradePoints = (aUnweighted + bUnweighted + cUnweighted + dUnweighted + eUnweighted + fUnweighted + gUnweighted + oUnweighted)
+                        let duplicateFinalCalculatedGPA = duplicateFinalCalculatedGradePoints / 8
+                        
+                        let defaults = UserDefaults.standard
+                        defaults.set("\(duplicateFinalCalculatedGPA)", forKey: "duplicateFinalGPAText")
+                        
+                    }
+
                     
                     finalCalculatedGradePoints = (a + b + c + d + e + f + g + o)
                     
@@ -1230,15 +1686,27 @@ class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelega
                     
                     print("they didnt equal nil")
                     
+                    let defaults = UserDefaults.standard
+                    defaults.set("\(finalCalculatedGPA)", forKey: "finalGPAText")
                 }
             }
 
         }
         
+        
+        
+        
+        
+        
     }
     
     
     @IBAction func resetButtonPressed(_ sender: UIButton) {
+        
+        
+        let defaults = UserDefaults.standard
+        defaults.set("", forKey: "finalGPAText")
+        defaults.set("", forKey: "duplicateFinalGPAText")
         
         
         previousGPAInput.text = "Previous GPA: \(finalGPA.text!)"
@@ -1442,16 +1910,65 @@ class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelega
         gradeFBlock.resignFirstResponder()
         gradeGBlock.resignFirstResponder()
         eigthBlock.resignFirstResponder()
-        
-        
 
 
     }
- 
 
+    @IBAction func pageControllerSwitchVC(_ sender: pageControllers) {
+        self.performSegue(withIdentifier: "toTrimesterVC", sender: self)
+    }
+    
+    @IBAction func dataChartButton(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "2Info", sender: self)
+    }
+    
+    
+    @IBAction func swipedLeft(gesture: UISwipeGestureRecognizer) {
+        print("swipedLeft")
+        self.performSegue(withIdentifier: "toTrimesterVC", sender: self)
+        
+    }
+    
+    @IBAction func swipedRight(gesture: UISwipeGestureRecognizer) {
+        print("swiped Right")
+        self.performSegue(withIdentifier: "2Info", sender: self)
+    }
+    
+    @IBAction func unwindToVC(segue: UIStoryboardSegue) {
+        
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+print("viewloaded")
+        
+        if finalGPA.text == "GPA" {
+            
+        let defaults = UserDefaults.standard
+        defaults.set("", forKey: "finalGPAText")
+        defaults.set("", forKey: "duplicateFinalGPAText")
+        }
+        
+        if unweightedButtonOutlet!.titleLabel?.text! == "Weighted" {
+            isGPAWeighted = true
+            let defaults = UserDefaults.standard
+            defaults.set(true, forKey: "isGPAWeighted")
+        } else {
+            isGPAWeighted = false
+            let defaults = UserDefaults.standard
+            defaults.set(false, forKey: "isGPAWeighted")
+        }
+        
+     let font = UIFont.systemFont(ofSize: 22.0)
+        minusTabButtonLabel.setTitleTextAttributes([NSFontAttributeName: font], for: .normal)
+        tabPlusOutlet.setTitleTextAttributes([NSFontAttributeName: font], for: .normal)
+        
+        
+        
+        
+        
         alphaVSNumericalSegmentedControl.selectedSegmentIndex = 0
         keyboardIsUP = false
         alphabeticalToolBar.isHidden = false
@@ -1590,6 +2107,19 @@ class ViewController: UIViewController, UITextFieldDelegate, UIApplicationDelega
       
     }
 
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
 
 }
 
